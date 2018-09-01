@@ -1,6 +1,6 @@
 module.exports={
- 'db': 'mongodb://localhost/adminC',
-'db_dev': 'mongodb://jansolote:Morrowind5@localhost:27017/thevapezonedb',
+ 'db': 'mongodb://jansolote:Morrowind5@localhost:27017/coloretedb',
+'db_dev': 'mongodb://jansolote:Morrowind5@localhost:27017/coloretedb',
  'secret':"admin"
 
 }
