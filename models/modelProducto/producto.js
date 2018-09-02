@@ -17,7 +17,9 @@ const productoSchema=new mongoose.Schema({
   compararPrecioProd:Number,
   precioVentaProd:Number,
   proveedoresProd:Array,
-  cantidadCarrito:{type:Number,default:1},
+  cantidadCarrito:{
+    type:Number
+  },
   tagsProd:Array,
   coleccionesProd:Array,
   tienePromocionesProd:Boolean,
