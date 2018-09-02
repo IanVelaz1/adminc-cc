@@ -4,7 +4,6 @@ module.exports=(app)=>{
   
  app.post('/producto',(req,res)=>{
     const producto=req.body;
-     producto.cantidadCarrito=1;
     Producto.guardarProducto(producto,(error,producto)=>{
        if(error){
          res.json({error:error,success:false,msg:"error al guardar producto"});
@@ -12,6 +11,7 @@ module.exports=(app)=>{
          res.json({success:true,producto});
        }
     });
+
  });
 
  app.get('/producto',(req,res)=>{
