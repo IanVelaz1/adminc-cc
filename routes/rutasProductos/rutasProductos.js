@@ -24,7 +24,7 @@ module.exports=(app)=>{
     });
  });
 
- app.get('/producto/:id',(req,res)=>{
+ app.get('/productos/:id',(req,res)=>{
    const id=req.params.id;
    Producto.recuperarProductoById(id,(error,producto)=>{
     if(error){
