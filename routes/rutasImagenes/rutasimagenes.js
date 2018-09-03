@@ -6,30 +6,19 @@ module.exports=(app,upload,cloudinary)=>{
   var date=new Date();
 
   app.post("/imagenes/subir",upload.single('file'),(req,res)=>{
-     
-      
-
      console.log('====================================');
      console.log(req.file);
      console.log('====================================');
-
-     
-    
-
    cloudinary.uploader.upload(req.file.path,(result,error)=>{
      if(error){
        res.json({error:error,success:false,msg:"error al guardar foto"});
      }else{
        res.json({success:true,result});
      }
-   });
-  
-
-   
+   });   
   });
 
   app.get("/imagenes/subir",(req,res)=>{
-    
       Imagen.recuperarImagenes({},(error,imagen)=>{
           if(error){
           res.json({error:error,success:false});
