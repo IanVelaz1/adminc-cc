@@ -12,7 +12,8 @@ uploadPhotos=multer({dest:'productos/'}),
 cloudinary=require('cloudinary'),
 helmet=require('helmet'),
 cookieParser=require('cookie-parser'),
-mercadoPago=require('mercadopago');
+mercadoPago=require('mercadopago'),
+nodemailer=require('nodemailer');
 
 cloudinary.config({
   cloud_name:"dtgkjbim1",

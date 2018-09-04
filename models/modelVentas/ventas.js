@@ -2,12 +2,12 @@ const mongoose=require('mongoose');
 
 const ventasSchema=new mongoose.Schema({
 
- cliente_venta:String,
+ cliente_venta:Object,
  productos_venta:Array,
  fecha_venta:Date,
  total_venta:Number,
  estado_venta:String,
- envio_comp:String,
+ envio_comp:Object,
  guia_pedido:String
 
 });
