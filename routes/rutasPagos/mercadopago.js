@@ -2,28 +2,31 @@
 module.exports=(app,mercadoPago)=>{
   
   
-
   app.post('/pago',(req,res)=>{
     let objCompra=req.body;
+    console.log('====================================');
+    console.log(objCompra);
+    console.log('====================================');
      let item={
        id:"",
        title:"",
        quantity:0,
+       picture_url:"",
        currency_id:'MXN',
        unit_price:0
      }
      let payer={
-       name:req.nombre,
-       surname:req.apellido,
-       email:req.email,
+       name:objCompra.payer.nombre,
+       surname:objCompra.payer.apellido,
+       email:objCompra.payer.email,
        date_created:new Date().toTimeString(),
        phone:{
-         number:req.telefono
+         number:parseFloat(objCompra.payer.telefono)
        },
        adress:{
-         street_name:req.body.calleUSer,
-         street_number:req.body.numeroCalle,
-         zip_code:req.body.codigoPostalUser
+         street_name:objCompra.payer.calleUser,
+         street_number:objCompra.payer.numeroCalle,
+         zip_code:objCompra.payer.codigoPostalUser
        }
 
      }
@@ -34,15 +37,18 @@ module.exports=(app,mercadoPago)=>{
          id:req.body.items[i]._id,
          title:req.body.items[i].nombreProd,
          quantity:req.body.items[i].cantidadCarrito,
+         picture_url:req.body.items[i].imagenesProd[0].secure_url,
          currency_id:'MXN',
          unit_price:req.body.items[i].precioVentaProd
        }
+
        let copia=Object.assign({},item);
        items.push(copia);
        item={
         id:"",
         title:"",
         quantity:0,
+        picture_url:"",
         currency_id:'MXN',
         unit_price:0
       }
@@ -52,18 +58,30 @@ module.exports=(app,mercadoPago)=>{
       items:items,
       payer:payer,
       payment_methods:{
-        excluded_payment_methods:[
+        "excluded_payment_methods": [
           {
-            id:"accout_money"
+              "id": "master"
           }
-        ],
+      ],
+      "excluded_payment_types": [
+          {
+              "id": "atm",
+              "id":"account_money",
+              "id":"digital_currency"
+          }
+      ],
         installments:1
+      },
+      shipments:{
+        reciever_adress:{
+          street_name:objCompra.payer.calleUser,
+          street_number:objCompra.payer.numeroCalle,
+          zip_code:objCompra.payer.codigoPostalUser
+        }
       }
      };
 
-     console.log('====================================');
-     console.log(preference);
-     console.log('====================================');
+
     
      
      mercadoPago.preferences.create(preference).then(

@@ -28,8 +28,8 @@ mercadoPago.configure({
 
 const port=process.env.PORT || 8080;
 
-mongoose.connect(config.db);
 
+mongoose.connect(config.db);
 mongoose.Promise=global.Promise;
 
 require('./config/passport')(passport);
@@ -68,6 +68,7 @@ require('./routes/rutasEnvios/rutasEnvios')(app);
 require('./routes/rutasPoliticas/rutasPoliticas')(app);
 require('./routes/rutasInterfaz/rutasInterfaz')(app);
 require('./routes/rutasPagos/mercadopago')(app,mercadoPago);
+require('./routes/rutasNews/rutasNews')(app);
 
 app.use(express.static(path.join(__dirname,"dist")));
 
