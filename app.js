@@ -58,7 +58,7 @@ require('./routes/rutasPromociones/rutasPromociones')(app);
 require('./routes/rutasRespuestas/rutasRespuestas')(app);
 require('./routes/rutasTags/rutasTags')(app);
 require('./routes/rutasUsuarios/rutasUsuarios')(app,passport);
-require('./routes/rutasVentas/rutasVentas')(app);
+require('./routes/rutasVentas/rutasVentas')(app,nodemailer);
 require('./routes/rutasTipos/rutasTipos')(app);
 require('./routes/rutasVisitas/rutasVisitasDiarias')(app);
 require('./routes/rutasConfiguracion/rutasConfiguracion')(app);
@@ -69,6 +69,7 @@ require('./routes/rutasPoliticas/rutasPoliticas')(app);
 require('./routes/rutasInterfaz/rutasInterfaz')(app);
 require('./routes/rutasPagos/mercadopago')(app,mercadoPago);
 require('./routes/rutasNews/rutasNews')(app);
+require('./routes/rutasContacto/rutasContacto')(app,nodemailer);
 
 app.use(express.static(path.join(__dirname,"dist")));
 

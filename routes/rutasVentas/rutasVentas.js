@@ -1,6 +1,6 @@
 const Venta=require('../../models/modelVentas/ventas');
 
-module.exports=(app)=>{
+module.exports=(app,nodemailer)=>{
   app.post('/venta',(req,res)=>{
     let venta=req.body.objVenta;
     let confirmacion=req.body.notificaciones;

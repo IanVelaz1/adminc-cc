@@ -72,12 +72,17 @@ module.exports=(app,mercadoPago)=>{
       ],
         installments:1
       },
-      shipments:{
-        reciever_adress:{
-          street_name:objCompra.payer.calleUser,
-          street_number:objCompra.payer.numeroCalle,
-          zip_code:objCompra.payer.codigoPostalUser
+      "shipments":{
+        "reciever_adress":{
+          "street_name":objCompra.payer.calleUser,
+          "street_number":objCompra.payer.numeroCalle,
+          "zip_code":objCompra.payer.codigoPostalUser
         }
+      },
+      "back_urls":{
+        "success":"https://www.coloretecosmetique.com/confirmacion-compra",
+        "failure":"https://www.coloretecosmetique.com/error-compra",
+        "pending":"https://www.coloretecosmetique.com/compra-pendiente"
       }
      };
 
