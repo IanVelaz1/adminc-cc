@@ -25,6 +25,10 @@ module.exports.recuperarPromocionById=(id,callback)=>{
   Promocion.findById(id,callback);
 }
 
+module.exports.recuperarPromocionByNombre=(nombre,callback)=>{
+  Promocion.find({nombreProm:nombre},callback)
+}
+
 module.exports.editarPromocion=(id,promocion,callback)=>{
   Promocion.findByIdAndUpdate(id,promocion,callback);
 }

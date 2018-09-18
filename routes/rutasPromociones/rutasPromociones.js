@@ -34,6 +34,17 @@ module.exports=(app)=>{
      });
   });
 
+  app.get('/promocion/es/:nombre',(req,res)=>{
+    let nombre=req.params.nombre;
+    Promocion.recuperarPromocionByNombre(nombre,(error,promocion)=>{
+      if(error){
+        res.json({error:error,success:false,msg:"error al recuperar promocion especifico"});
+      }else{
+        res.json({success:true,promocion});
+      }
+    });
+  });
+
   app.put('/promocion/:id',(req,res)=>{
     const id=req.params.id;
     const promocion=req.body;
