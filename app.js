@@ -22,8 +22,8 @@ cloudinary.config({
 });
 
 mercadoPago.configure({
-  client_id:'4184865073123730',
-  client_secret:'0z0lF08UJbXOXWfut9LU8PHBRlbVsRWr'
+  client_id:'3482176542072335',
+  client_secret:'JmXqVsv7J9prab0WiTiB4NbzCUwsHKpF'
 });
 
 const port=process.env.PORT || 8080;
@@ -70,6 +70,7 @@ require('./routes/rutasInterfaz/rutasInterfaz')(app);
 require('./routes/rutasPagos/mercadopago')(app,mercadoPago);
 require('./routes/rutasNews/rutasNews')(app);
 require('./routes/rutasContacto/rutasContacto')(app,nodemailer);
+require('./routes/rutasCreador/rutasCreador')(app);
 
 app.use(express.static(path.join(__dirname,"dist")));
 
