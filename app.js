@@ -14,6 +14,7 @@ helmet=require('helmet'),
 cookieParser=require('cookie-parser'),
 mercadoPago=require('mercadopago'),
 nodemailer=require('nodemailer');
+const { seoMiddleware } = require('express-middleware-seo')
 
 cloudinary.config({
   cloud_name:"dtgkjbim1",
@@ -26,7 +27,7 @@ mercadoPago.configure({
   client_secret:'JmXqVsv7J9prab0WiTiB4NbzCUwsHKpF'
 });
 
-const port=process.env.PORT || 8080;
+const port=process.env.PORT || 8000;
 
 
 mongoose.connect(config.db);
@@ -71,6 +72,18 @@ require('./routes/rutasPagos/mercadopago')(app,mercadoPago);
 require('./routes/rutasNews/rutasNews')(app);
 require('./routes/rutasContacto/rutasContacto')(app,nodemailer);
 require('./routes/rutasCreador/rutasCreador')(app);
+
+
+ 
+app.use(
+  seoMiddleware({
+    enable: true,
+    render: {
+      useReady: true,
+      renderTimeout: 10000
+    }
+  })
+)
 
 app.use(express.static(path.join(__dirname,"dist")));
 
