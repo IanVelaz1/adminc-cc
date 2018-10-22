@@ -27,7 +27,7 @@ mercadoPago.configure({
   client_secret:'JmXqVsv7J9prab0WiTiB4NbzCUwsHKpF'
 });
 
-const port=process.env.PORT || 8080;
+const port=process.env.PORT || 8000;
 
 
 mongoose.connect(config.db);
