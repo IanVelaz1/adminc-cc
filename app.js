@@ -34,10 +34,21 @@ mongoose.connect(config.db);
 mongoose.Promise=global.Promise;
 
 require('./config/passport')(passport);
+let whitelist=['http://www.coloretecosmetique.com','https://www.coloretecosmetique.com'];
+//middlewares
 
+var corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
 
 ///middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
