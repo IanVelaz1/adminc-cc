@@ -48,7 +48,7 @@ var corsOptions = {
   }
 
 ///middlewares
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
