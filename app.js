@@ -34,7 +34,7 @@ mongoose.connect(config.db);
 mongoose.Promise=global.Promise;
 
 require('./config/passport')(passport);
-let whitelist=['http://www.coloretecosmetique.com','https://www.coloretecosmetique.com'];
+let whitelist=['http://coloretecosmetique.com','https://coloretecosmetique.com'];
 //middlewares
 
 var corsOptions = {
