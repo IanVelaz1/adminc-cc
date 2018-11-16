@@ -3,7 +3,7 @@ const VisitaDiaria=require('../../models/modelVisitas/visitasDiarias');
 module.exports=(app)=>{
 
   app.post('/visitas',(req,res)=>{
-    const vi=req.body;
+    const vi=req.body;    
     VisitaDiaria.guardarVisitas(vi,(error,visita)=>{
         if(error){
           res.json({error:error,msg:"error al guardar visita"});
@@ -21,6 +21,18 @@ module.exports=(app)=>{
         res.json({visitas});
       }
     });
+  });
+
+
+  app.get('/visitas/:date',(req,res)=>{
+     let fecha=req.params.date;
+    VisitaDiaria.recuperarVisitasDiarias(fecha,(error,visitas)=>{
+      if(error){
+        res.json({error:error,msg:"error al recuperar visitas"});
+      }else{
+        res.json({visitas});
+      }
+    }); 
   });
 
 }
