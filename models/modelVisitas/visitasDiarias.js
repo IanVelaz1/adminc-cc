@@ -1,7 +1,16 @@
 const mongoose=require('mongoose');
 
 const visitasSchema=new mongoose.Schema({
-  fechaVisita:Date
+  fechaVisita:String,
+  paginaVisita:String,
+  objetoPagina:{
+    type:Object,
+    default:{}
+  },
+  location:{
+    type:Object,
+    default:{}
+  }
 });
 
 const VisitaDiaria=module.exports=mongoose.model('VisitaDiaria',visitasSchema);
@@ -12,5 +21,9 @@ const VisitaDiaria=module.exports=mongoose.model('VisitaDiaria',visitasSchema);
 
  module.exports.recuperarVisitas=(visita,callback)=>{
    VisitaDiaria.find(visita,callback);
+ }
+
+ module.exports.recuperarVisitasDiarias=(fecha,callback)=>{
+   VisitaDiaria.find({fechaVisita:fecha},callback);
  }
 

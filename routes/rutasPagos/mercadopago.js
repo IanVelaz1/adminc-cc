@@ -87,6 +87,7 @@ module.exports=(app,mercadoPago)=>{
      };
 
 
+    console.log(preference);
     
      
      mercadoPago.preferences.create(preference).then(
